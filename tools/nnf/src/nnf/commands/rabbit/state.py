@@ -1,4 +1,4 @@
-"""system state sub-command: report the state of Rabbit storage resources.
+"""rabbit state sub-command: report the state of Rabbit storage resources.
 
 Displays a summary of NnfNode server health/status and DWS Storage
 state/status, including disabled and drained nodes with their reasons.
@@ -46,7 +46,7 @@ _MISSING_BUCKET = "<missing>"
 
 
 def register(subparsers: argparse._SubParsersAction) -> None:  # type: ignore[type-arg]
-    """Register the system state sub-command."""
+    """Register the rabbit state sub-command."""
     parser: argparse.ArgumentParser = add_command_parser(
         subparsers,
         "state",
@@ -221,7 +221,7 @@ def _build_annotation_rows(
 
 
 def run(args: argparse.Namespace) -> int:
-    """Execute the system state sub-command."""
+    """Execute the rabbit state sub-command."""
     errors = 0
 
     # --- Node Status Summary ---
