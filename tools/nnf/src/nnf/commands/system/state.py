@@ -318,6 +318,11 @@ def _show_disabled_computes() -> None:
         LOGGER.info("Failed to parse JGF output")
         return
 
+    if jgf is None:
+        # flux ion-resource returns JSON "null" when no nodes match the
+        # property filter; treat that as an empty result.
+        return
+
     nodes = jgf.get("graph", {}).get("nodes", [])
     hostnames = []
     for node in nodes:
